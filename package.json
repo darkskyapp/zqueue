@@ -1,0 +1,5 @@
+{
+  "name": "zqueue",
+  "description": "A little redis-backed queue dingus.",
+  "version": "0.1.0"
+}
