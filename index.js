@@ -36,9 +36,14 @@ exports.queue = function(name, redis) {
     redis.del(name, callback);
   };
   
+  /* Return an array of a range of items in the queue, sorted by score */
+  queue.inspectRange = function(start_i, stop_i, callback) {
+    redis.zrange([name, start_i, stop_i], callback);
+  };
+  
   /* Return an array of all items in the queue, sorted by score */
   queue.inspect = function(callback) {
-    redis.zrange([name, 0, -1], callback);
+    queue.inspectRange(0, -1, callback);
   };
   
   return queue;
